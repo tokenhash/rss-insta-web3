@@ -6,12 +6,14 @@
             async function main(){
                 var data = await axios.get('https://raw.githubusercontent.com/tokenhash/rss-insta-web3/main/rssCheck.json')
                 data = data.data
+                var i = 0
                 for (const url in data) {
                     if (Object.hasOwnProperty.call(data, url)) {
                         const e = data[url];
                         console.log(e)
-                        $('#show-table').append(`<tr><td><a href="${url}" target="_blank">${url}</a></td><td>${e.status}</td><td>${new Date(e.lastCheckTime * 1000).toISOString()}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
+                        $('#show-table').append(`<tr><td>${i}</td><td><a href="${url}" target="_blank">${url}</a></td><td>${e.status}</td><td>${new Date(e.lastCheckTime * 1000).toISOString()}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
                     }
+                    i++
                 }
             }
             main()
@@ -26,6 +28,7 @@
         
         <table id="show-table" style="width:100%; border: 1px solid black;">
             <tr id="show-table-head">
+                <td>index</td>
                 <td>url</td>
                 <td>status</td>
                 <td>lastCheckTime</td>
