@@ -14,7 +14,7 @@
                         if(e.pubTime === null || e.pubTime === undefined) {
                             e.pubTime = 0
                         }
-                        $('#show-table').append(`<tr><td>${i}</td><td><a href="${url}" target="_blank">${url}</a></td><td>${e.status}</td><td>${new Date(e.lastCheckTime * 1000).toISOString()}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
+                        $('#show-table').append(`<tr><td>${i}</td><td><a href="${url}" target="_blank">${url}</a></td><td>${e.status}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
                     }
                     i++
                 }
@@ -34,7 +34,6 @@
                 <td>index</td>
                 <td>url</td>
                 <td>status</td>
-                <td>lastCheckTime</td>
                 <td>pubTime</td>
             </tr>
             
