@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script id="rss-check" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+        <script>
+            async function main(){
+                var data = await axios.get('https://raw.githubusercontent.com/tokenhash/rss-insta-web3/main/rssCheck.json')
+                data = data.data
+                for (const url in data) {
+                    if (Object.hasOwnProperty.call(data, url)) {
+                        const e = data[url];
+                        console.log(e)
+                        $('#show-table').append(`<tr><td>${url}</td><td>${e.status}</td><td>${new Date(e.lastCheckTime * 1000).toISOString()}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
+                    }
+                }
+            }
+            main()
+        </script>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <table id="show-table" style="width:100%; border: 1px solid black;">
+            <tr id="show-table-head">
+                <td>url</td>
+                <td>status</td>
+                <td>lastCheckTime</td>
+                <td>pubTime</td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
