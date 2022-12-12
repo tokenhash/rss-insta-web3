@@ -10,7 +10,7 @@
                     if (Object.hasOwnProperty.call(data, url)) {
                         const e = data[url];
                         console.log(e)
-                        $('#show-table').append(`<tr><td>${url}</td><td>${e.status}</td><td>${new Date(e.lastCheckTime * 1000).toISOString()}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
+                        $('#show-table').append(`<tr><td><a href="${url}" target="_blank">${url}</a></td><td>${e.status}</td><td>${new Date(e.lastCheckTime * 1000).toISOString()}</td><td>${new Date(e.pubTime * 1000).toISOString()}</td></tr>`)
                     }
                 }
             }
